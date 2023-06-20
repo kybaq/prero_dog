@@ -1,0 +1,9 @@
+{% extends "dog_skin_detect/skin_detection.html" %}
+
+{% block content %}
+
+{% for file_model in files_list %}
+<p>{{ file_model.file.name }}</p>
+{% endfor %}
+
+{% endblock %}

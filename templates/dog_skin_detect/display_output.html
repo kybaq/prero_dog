@@ -1,0 +1,22 @@
+<!-- display_image.html -->
+{% extends "dog_skin_detect/skin_detection.html" %}
+
+{% block content %}
+
+<article>
+    <div class="inner">
+        <img src="{{ image_url }}" alt="결과 이미지" style="max-width: 100%; height: auto;"> 
+    </div>
+</article>
+    
+<article>
+    <ul>
+        {% for result in search_results %}
+          <li><a href="{{ result }}">{{ result }}</a></li>
+        {% endfor %}
+    </ul>
+</article>
+
+{% endblock %}
+
+

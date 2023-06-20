@@ -1,0 +1,16 @@
+{% extends "dog_skin_detect/skin_detection.html" %}
+
+{% block content %}
+<!--Here the number 2 in "/App/delete/2/" needs to be replaced with the pk of the file. The logic is working. -->
+<h5>삭제할 파일을 선택해주세요:</h5>
+{% for myfile, pk_value in filename %}
+    <p> - {{ myfile }}</p>
+    {% if pk_value %}
+    <form action="{% url 'dog_skin_detect:APIdelete' pk=pk_value %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+    {% endif %}
+{% endfor %}
+{% endblock %}
+

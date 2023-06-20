@@ -1,0 +1,17 @@
+<!-- display_image.html -->
+{% extends "dog_eye_detect/eye_detection.html" %}
+
+{% block content %}
+
+<article>
+  <p>
+    질병이 걱정돼 예방하고 싶으신가요? 저희가 도움이 될지도 모르는 몇 가지 검색 결과를 준비해봤어요! 
+  </p>
+    <ul>
+        {% for result in search_results %}
+          <li><a href="{{ result }}">{{ result }}</a></li>
+        {% endfor %}
+    </ul>
+</article>
+
+{% endblock %}

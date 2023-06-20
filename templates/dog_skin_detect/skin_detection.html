@@ -1,0 +1,270 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	{% load static %}
+	<head>
+		<title>프레로 독 - 반려견 질병 진단 서비스</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<!-- Note: The "styleN" class below should match that of the banner element. -->
+					<header id="header" class="alt style2">
+						<a href="/index/" class="logo"><strong>프레로</strong> <span>독</span></a>
+						<nav>
+							<a href="#menu">메뉴</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="/index/">홈페이지</a></li>
+							<li><a href="/dog_eye_detect/">안구 질환 확인</a></li>
+							<li><a href="/dog_skin_detect/">피부 질환 확인</a></li>
+							<li><a href="/bulletin/">질문하기</a></li>
+							<!-- <li><a href="elements.html">건강 식품</a></li>
+							<li><a href="elements.html">우리에 대해</a></li> -->
+						</ul>
+						<ul class="actions stacked">
+							<!-- <li><a href="#" class="button primary fit">회원가입</a></li>
+							<li><a href="#" class="button fit">로그인</a></li>
+							<li><a href="#" class="button fit">아이디 / 비밀번호 찾기</a></li> -->
+						</ul>
+					</nav>
+
+				<!-- Banner -->
+				<!-- Note: The "styleN" class below should match that of the header element. -->
+					<section id="banner" class="major.alt">
+						<div class="inner">
+							<span class="image">
+								<img src="{% static 'image/detect_banner.png' %}" alt="" />
+							</span>
+							<header class="major">
+								<h1>피부 질환 확인하기</h1>
+							</header>
+							<div class="content">
+								<p>
+									직접 촬영하신 사진을 가이드라인에 맞춰서 업로드 해주세요.
+									<br>
+									!!! 어떤 질병 예측가능한지 간단하게 써주기 !!!
+								</p>
+							</div>
+						</div>
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="">
+										<h2>올바르게 사진 올리는 방법</h2>
+									</header>
+									<!--
+										<p>
+											
+										</p>
+									-->
+								</div>
+							</section>
+
+							<section id="two" class="spotlights">
+								<section>
+									<a href="#" class="image">
+										<img src="{% static 'image/right_skin_example.jpg' %}" alt="" data-position="center center" />
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>올바른 예시</h3>
+											</header>
+											<p>
+												예시 사진 처럼 질환 의심 부위가 잘 보이도록 하고 초점을 맞춰주세요!
+											</p>
+											<ul class="actions">
+												<!--
+													<li><a href="generic.html" class="button">Learn more</a></li>
+												-->
+											</ul>
+										</div>
+									</div>
+								</section>
+								<section>
+									<a href="#" class="image">
+										<img src="{% static 'image/wrong_skin_example.jpeg' %}" alt="" data-position="top center" />
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>이렇게는 안돼요!</h3>
+											</header>
+											<p>
+												질환 의심 부위를 제외한 다른 부분이 가능하면 나오지 않도록 해주세요.
+											</p>
+											<ul class="actions">
+												<!--
+													<li><a href="generic.html" class="button">Learn more</a></li>
+												-->
+											</ul>
+										</div>
+									</div>
+								</section>
+								<section>
+									<a href="#" class="image">
+										<img src="{% static 'image/reject.jpg' %}" alt="" data-position="25% 25%" />
+									</a>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>결과가 믿음이 가지 않아요!</h3>
+											</header>
+											<p>
+												프레로 독은 결정에 도움을 드리는 것 뿐, 최종 판단은 전문의의 진료를 받으셔야 합니다.
+											</p>
+											<ul class="actions">
+												<!--
+													<li><a href="generic.html" class="button">Learn more</a></li>
+												-->
+											</ul>
+										</div>
+									</div>
+								</section>
+							</section>
+
+							<!-- Three -->
+							<section id="three">
+								<div class="inner">
+									<header class="major">
+										<h2>사진 업로드</h2>
+									</header>
+									<p>
+										촬영하신 사진을 업로드해주시고, 예측하기 버튼을 눌러 예측할 파일을 선택해주세요!
+										<br>
+										금방 결과를 확인하실 수 있을거에요.
+									</p>
+
+										<ul class="actions">
+											<!-- 파일 첨부 기능 구현-->
+											<label class="button next" for="input-file">파일 첨부</label>
+											<form action="{% url 'dog_skin_detect:APIupload' %}" method="post" enctype="multipart/form-data">
+												{% csrf_token %}
+												<input type="file" name="file" id="input-file" style="display:none">
+												
+												<input type="submit" value="파일 업로드">
+											</form>
+											<li><a href="{% url 'dog_skin_detect:files_list' %}" class="button next">내가 올린 파일 보기</a></li>
+											<li><a href="{% url 'dog_skin_detect:file_delete' %}" class="button next">내가 올린 파일 지우기</a></li>	
+											<li><a href="{% url 'dog_skin_detect:file_select' %}" class="button next">예측하기</a></li>
+										</ul>
+										<span id="file-name"></span>
+										<!-- 첨부한 파일 이름 확인 -->
+										<script>
+											document.getElementById('input-file').addEventListener('change', function() {
+												var fileName = this.files[0].name;
+												document.getElementById('file-name').textContent = fileName;
+											});
+										</script>
+										
+											{% block content %}
+											{% endblock %}
+								</div>
+							</section>
+					</div>
+
+				<!-- Contact -->
+				<!-- <section id="contact">
+					<div class="inner">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field half">
+										<label for="name">성함</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field half">
+										<label for="email">E-mail</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">보내실 말씀</label>
+										<textarea name="message" id="message" rows="6"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="메시지 보내기" class="primary" /></li>
+									<li><input type="reset" value="지우기" /></li>
+								</ul>
+							</form>
+						</section>
+
+						<section class="split">
+							<section>
+								<div class="contact-method">
+									<span class="icon solid alt fa-envelope"></span>
+									<h3>E-mail</h3>
+									<a href="#">flfsk12@gmail.com</a>
+								</div>
+							</section>
+							<section>
+								<div class="contact-method">
+									<span class="icon solid alt fa-phone"></span>
+									<h3>연락처</h3>
+									<span>010-0000-0000</span>
+								</div>
+							</section>
+							<section>
+								<div class="contact-method">
+									<span class="icon solid alt fa-home"></span>
+									<h3>주소</h3>
+									<span>광주광역시<br />
+									북구 용봉로 77<br />
+									전남대학교</span>
+								</div>
+							</section>
+						</section>
+					</div>
+				</section> -->
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<!-- <ul class="icons">
+								<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul> -->
+							<ul class="copyright">
+								<li>&copy; Prero Dog </li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/jquery.scrolly.min.js' %}"></script>
+		<script src="{% static 'js/jquery.scrollex.min.js' %}"></script>
+		<script src="{% static 'js/browser.min.js' %}"></script>
+		<script src="{% static 'js/breakpoints.min.js' %}"></script>
+		<script src="{% static 'js/util.js' %}"></script>
+		<script src="{% static 'js/main.js' %}"></script>
+		<script src="{% static 'js/javascript.js' %}"></script>
+
+	</body>
+</html>

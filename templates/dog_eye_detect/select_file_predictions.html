@@ -1,0 +1,19 @@
+{% extends "dog_eye_detect/eye_detection.html" %}
+
+{% block content %}
+    <form action="{% url 'dog_eye_detect:APIpredict' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <h5>예측을 원하는 파일을 선택해 주세요!</h5>
+        <h5>파일 이름을 누르시면 이미지 파일을 확인하실 수 있습니다.</h5>
+        {% for myfile in filename %}
+        <input id="selection_{{ forloop.counter }}" type="radio" name="file_name" value="{{ myfile }}">
+        <label for="selection_{{ forloop.counter }}">
+            <a href="/media/{{ myfile }}">{{ myfile }}</a>
+        </label>
+        <br>
+        {% endfor %}
+        <br>
+        <button type="submit" class="btn btn-primary">예측하기</button>
+    </form>
+{% endblock %}

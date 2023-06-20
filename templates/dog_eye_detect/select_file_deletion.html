@@ -1,0 +1,14 @@
+{% extends "dog_eye_detect/eye_detection.html" %}
+
+{% block content %}
+<h5>삭제할 파일을 선택해주세요:</h5>
+{% for myfile, pk_value in filename %}
+    <p> - {{ myfile }}</p>
+    {% if pk_value %}  <!-- Only display the form if pk_value is not None -->
+        <form action=" {% url 'dog_eye_detect:APIdelete' pk=pk_value %} " method="post">
+            {% csrf_token %}
+            <input type="submit" value="Delete">
+        </form>
+    {% endif %}
+{% endfor %}
+{% endblock %}
